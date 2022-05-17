@@ -1,0 +1,7 @@
+help.start()
+help(diff)
+RSiteSearch("diff")
+example("diff")
+help.search("Cars")
+apropos("foot")
+help(citFooter)

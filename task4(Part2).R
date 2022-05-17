@@ -1,0 +1,45 @@
+#install.packages("dplyr")
+#install.packages("ggplot2")
+library(dplyr)
+library(ggplot2)
+flats <- read.csv("flats.csv", stringsAsFactors=FALSE, encoding="UTF-8")
+class(flats)
+str(flats)
+flats <- read.csv("flats.csv", stringsAsFactors=FALSE, dec= ",")
+str(flats)
+dim(flats)
+head(flats)
+tail(flats,10)
+names(flats)
+
+str(flats)
+summary(flats)
+glimpse(flats)
+
+count(flats, Місто)
+flats %>%
+  count(Місто) %>%
+  arrange(n)
+
+flats %>%
+  filter(Місто != "Києво-Святошинський") %>%
+  filter(Кімнат == 3) %>%
+  count(Місто) %>%
+  arrange(desc(n))
+
+flats %>%
+  filter(Кімнат == 2) %>%
+  filter(Місто != "Києво-Святошинський") %>%
+  count(Місто) %>%
+  arrange(desc(n))
+
+ggplot(flats, aes(x=Кімнат)) +geom_bar(fill="lightblue",col="grey") +
+  ylab('Кількість')
+
+p <- ggplot(flats, aes(x=Загальна_площа)) +
+  geom_bar(fill="lightblue", col="grey") + ylab('Кількість')
+p
+
+library(ggplot2)
+ggplot(flats, aes(x=Загальна_площа, y=Ціна)) +
+  geom_point()
